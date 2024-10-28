@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.CompanysDao">
+<insert id="addCompanys" parameterType="com.bean.Companys" >
+      insert into Companys values(null,#{loginaccount1},#{password1},#{truename1},#{telephone1},'未被审核',#{address1},#{cname})
+</insert>
+
+<select id="selectAllCompanys" resultType="com.bean.Companys">
+     select * from Companys
+</select>
+<delete id="deleteCompanysByID" parameterType="int" >
+      delete from Companys where cid=#{cid}
+</delete>
+<select id="companysLogin" resultType="com.bean.Companys">
+     select * from Companys  where loginaccount1=#{loginaccount1} and password1=#{password1}
+</select>
+<update id="updateCompanysByID" parameterType="com.bean.Companys">
+     update Companys set  password1=#{password1}, truename1=#{truename1}, telephone1=#{telephone1}, address1=#{address1} where  cid=#{cid}
+</update>
+<update id="updateCompanysByID1" parameterType="int">
+     update Companys set ctypes1='已审核' where  cid=#{cid}
+</update>
+</mapper>

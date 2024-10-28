@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.OrdersDao">
+<insert id="addOrders" parameterType="com.bean.Orders" >
+      insert into Orders values(null,#{pid},#{wid},#{rid},'等待通知面试','还未面试',#{ooid})
+</insert>
+<delete id="deleteOrdersByID" parameterType="int" >
+      delete from Orders where oid=#{oid}
+</delete>
+<select id="selectOrdersByPid" resultType="com.pojo.Orderss" parameterType="int">
+     select * from Orders o join Works w on o.wid=w.wid  where pid=#{pid}
+</select>
+<update id="UpdateOrdersByOoid" parameterType="String" >
+      update Orders set orderstypes1='通知成功'   where ooid=#{ooid}
+</update>
+<update id="UpdateOrdersByOoid1" parameterType="String" >
+      update Orders set orderstypes2='面试通过，尽快入职'   where ooid=#{ooid}
+</update>
+</mapper>

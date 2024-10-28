@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.WorksDao">
+<insert id="addWorks" parameterType="com.bean.Works" >
+      insert into Works values(null,#{wname},#{moneys},#{worksxl},#{worksjy},#{worksaddress},#{times1},#{introduce},#{cid},#{tname})
+</insert>
+<delete id="deleteWorksByID" parameterType="int" >
+      delete from Works where wid=#{wid}
+</delete>
+<select id="selectAllWorks" resultType="com.bean.Works" parameterType="int">
+     select * from Works where cid=#{cid}
+</select>
+    <select id="selectAllWorksByPage"  resultType="com.bean.Works" parameterType="map">
+		select * from Works where cid=#{cid} order by wid limit #{startIndex}, #{perPageSize}
+	</select>
+<select id="selectAllWorks1" resultType="com.bean.Works" >
+     select * from Works 
+</select>
+<select id="selectWorksByID" resultType="com.bean.Works" parameterType="int">
+    select * from Works where wid=#{wid}
+</select>
+<select id="selectWorksByID1" resultType="com.bean.Works" parameterType="int">
+    select * from Works  w join Companys c on w.cid=c.cid where wid=#{wid}
+</select>
+<delete id="updateWorks" parameterType="com.bean.Works" >
+      update Works set wname=#{wname},moneys=#{moneys},worksxl=#{worksxl},worksjy=#{worksjy},worksaddress=#{worksaddress},times1=#{times1},introduce=#{introduce},tname=#{tname} where wid=#{wid}
+</delete>
+<select id="selectWorksByTname" resultType="com.bean.Works" parameterType="String">
+     select * from Works where tname=#{tname}
+</select>
+<select id="selectWorksByWname" resultType="com.bean.Works" parameterType="String">
+     select * from Works where wname   like '%' #{wname}  '%'
+</select>
+</mapper>

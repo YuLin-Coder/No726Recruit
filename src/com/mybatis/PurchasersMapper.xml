@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.PurchasersDao">
+<insert id="addPurchasers" parameterType="com.bean.Purchasers" >
+      insert into Purchasers values(null,#{loginaccount},#{password},#{truename},#{telephone},'未审核')
+</insert>
+
+<select id="selectAllPurchasers" resultType="com.bean.Purchasers">
+     select * from Purchasers
+</select>
+<delete id="deletePurchasersByID" parameterType="int" >
+      delete from Purchasers where pid=#{pid}
+</delete>
+<select id="purchasersLogin" resultType="com.bean.Purchasers">
+     select * from Purchasers  where loginaccount=#{loginaccount} and password=#{password}
+</select>
+<update id="updatePurchasersByID" parameterType="com.bean.Purchasers">
+     update Purchasers set  password=#{password}, truename=#{truename}, telephone=#{telephone} where  pid=#{pid}
+</update>
+<update id="updatePurchasersByID1" parameterType="int">
+     update Purchasers set  ptypes='已审核' where  pid=#{pid}
+</update>
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.OrderRecordDao">
+<insert id="addOrderRecord" parameterType="com.bean.OrderRecord" >
+      insert into OrderRecord values(null,#{pid1},#{wid1},#{rid1},'等待通知面试','面试',#{ooid})
+</insert>
+<delete id="deleteOrderRecordByID" parameterType="int" >
+      delete from OrderRecord where oid=#{oid}
+</delete>
+<select id="selectAllOrderRecord" resultType="com.pojo.OrderRecords" parameterType="int">
+     select * from OrderRecord o join Works w on o.wid1=w.wid join Resumes r on o.rid1=r.rid where cid=#{cid}  and  OrderRecordtypes1='等待通知面试'
+</select>
+<select id="selectAllOrderRecord1" resultType="com.pojo.OrderRecords" parameterType="int">
+ select * from OrderRecord o join Works w on o.wid1=w.wid join Resumes r on o.rid1=r.rid where cid=#{cid}  and  OrderRecordtypes1='通知成功'
+</select>
+
+<update id="updateOrderRecordByOoid" parameterType="String" >
+      update OrderRecord set OrderRecordtypes1='通知成功'  where ooid=#{ooid}
+</update>
+<update id="updateOrderRecordByOoid1" parameterType="String" >
+      update OrderRecord set OrderRecordtypes1='面试通过'  where ooid=#{ooid}
+</update>
+</mapper>

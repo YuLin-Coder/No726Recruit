@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd"> 
+<configuration>
+<settings>
+<setting name="logImpl" value="LOG4J"/>
+</settings>
+  <mappers >
+     <mapper resource="com/mybatis/AdminMapper.xml"/>
+     <mapper resource="com/mybatis/PurchasersMapper.xml"/>
+     <mapper resource="com/mybatis/NoticeMapper.xml"/>
+     <mapper resource="com/mybatis/CompanysMapper.xml"/>
+     <mapper resource="com/mybatis/WorksMapper.xml"/>
+     <mapper resource="com/mybatis/ResumesMapper.xml"/>
+     <mapper resource="com/mybatis/OrderRecordMapper.xml"/>
+     <mapper resource="com/mybatis/OrdersMapper.xml"/>
+      <mapper resource="com/mybatis/TypeMapper.xml"/>
+ </mappers>
+  
+</configuration>
+
